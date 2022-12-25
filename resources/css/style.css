@@ -1,0 +1,63 @@
+body{
+    font-family: 'Archivo Narrow', sans-serif;
+}
+.container-principal{
+
+    padding: 1em;
+
+}
+.navbar a{
+    color: #FFF;
+    font-size: large;
+}
+.navbar {
+
+    background: rgb(45,108,207);
+    background: linear-gradient(90deg, rgba(45,108,207,1) 25%, rgba(245,88,4,1) 100%, rgba(255,51,0,1) 100%);
+}
+.dropdown-menu-end a{
+    color: #000;
+}
+body{
+    font-family: 'Archivo Narrow', sans-serif;
+}
+.btn{
+    margin-top: 1em;
+}
+.error{
+    color:red;
+    border-radius: 3px;
+    padding: 0.3em;
+    background-color: #000000;
+    margin-top: 0.5em;
+}
+#icon{
+    padding: 0.5em;
+}
+#icon:hover{
+    background-color: rgb(230, 208, 208);
+    border-radius: 0.5em;
+}
+.actions-buttons{
+    display: flex;
+}
+.text-gray{
+    color: gray;
+}
+.dataTables_empty{
+    display: none;
+}
+.text_title_line{
+    border: 1px solid #0d6efd;
+}
+.title{
+    background-color: #c94a05;
+    border-radius: 0.3em;
+    padding: 1em;
+    bottom: 0;
+    margin-top: 0.5em;
+    color: #fff;
+}
+.nav-tabs{
+    font-size: large;
+}
