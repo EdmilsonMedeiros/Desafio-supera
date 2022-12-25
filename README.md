@@ -4,7 +4,7 @@
 
 Projeto foi desenvolvido na versão 9.4.1 do framwork Laravel
 
-* Clonar do repositório
+* Clonar o repositório
 * Servir a aplicação
 * Executar npm run dev
 * Criar banco de dados
