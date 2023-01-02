@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\MaintenanceController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/car', CarController::class);
 Route::resource('maintenance', MaintenanceController::class);
+
+Route::get('maintenance/{maintenance}', [MaintenanceController::class, 'destroyAjax']);
