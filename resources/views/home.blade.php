@@ -15,7 +15,7 @@
             <h4><img src="{{ asset('img/home.png') }}" alt=""> Manutenções previstas para os próximos 7 dias</h4>
         </div>
         <br>
-        <div class="tabela-manutencoes">
+        <div class="tabela-manutencoes" id="tabela_manutencoes">
             <table id="table_id" class="table display table-hover table-striped">
                 <thead>
                     <tr>
@@ -74,11 +74,50 @@
     </div>
   </div>
 
+
 <script>
+    var id;
+    function confirmDelete(id){
+        if(confirm('Tem certeza?')){
+            $.ajax({
+                url: '/maintenance/'+id,
+                type: "GET"
+            })
+            .done(function( data ) {
+                var table = $('#table_id').DataTable();
+                table
+                    .clear()
+                    .draw();
+
+                    $('#table_id').DataTable()
+                    $.ajax({
+                    url: "/api/"+{{ Auth::user()->id }}+"/maintenances",
+                    type: "GET"
+                    })
+                    .done(function( data ) {
+                            for (var i = 0; i <= data.length; i++){
+                                $('#tr_maintenance').append(
+                                    "<tr>" +
+                                        "<td>" + data[i].id         + "</td>"  +
+                                        "<td>" + data[i].car_id  + " - " + data[i].marca_veiculo  + "</td>" +
+                                        "<td>" + data[i].created_at     + "</td>" +
+                                        "<td>" + data[i].modelo_veiculo + "</td>" +
+                                        "<td>" + data[i].versao_veiculo + "</td>" +
+                                        "<td>" + data[i].descricao      + "</td>" +
+                                        "<td>" + "<a class='btn btn-danger' onclick='confirmDelete("+data[i].id+")'>Excluir</a>" + "</td>" +
+                                    "</tr>",
+                                )
+                            }
+
+                    });
+            });
+        }
+    }
 
     $(document).ready(function(){
+        $('#table_id').DataTable()
         $.ajax({
-        url: "http://localhost:8000/api/"+{{ Auth::user()->id }}+"/maintenances",
+        url: "/api/"+{{ Auth::user()->id }}+"/maintenances",
         type: "GET"
         })
         .done(function( data ) {
@@ -91,9 +130,11 @@
                             "<td>" + data[i].modelo_veiculo + "</td>" +
                             "<td>" + data[i].versao_veiculo + "</td>" +
                             "<td>" + data[i].descricao      + "</td>" +
+                            "<td>" + "<a class='btn btn-danger' onclick='confirmDelete("+data[i].id+")'>Excluir</a>" + "</td>" +
                         "</tr>",
                     )
                 }
+
         });
     });
 </script>

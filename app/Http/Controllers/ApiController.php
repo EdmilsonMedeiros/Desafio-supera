@@ -104,4 +104,14 @@ class ApiController extends Controller
     {
         //
     }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  Maintenance $maintenance
+     * @return \Illuminate\Http\Response
+     */
+    public function ajaxDestroy(Maintenance $maintenance)
+    {
+        $maintenance->delete();
+    }
 }

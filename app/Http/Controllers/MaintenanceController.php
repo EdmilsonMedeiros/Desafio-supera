@@ -131,4 +131,15 @@ class MaintenanceController extends Controller
             return redirect()->back()->with('no_sucesso', 'no_sucesso');
         }
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Maintenance  $maintenance
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyAjax(Maintenance $maintenance)
+    {
+        $maintenance->delete();
+    }
 }
